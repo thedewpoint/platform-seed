@@ -6,10 +6,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "test": "ng test & mocha utils",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "mocha": "mocha utils"
+    "testall" : "npm run test & npm run mochatest & npm run e2e",
+    "mochatest": "mocha utils/*/*.spec.*"
   },
   "private": true,
   "dependencies": {
