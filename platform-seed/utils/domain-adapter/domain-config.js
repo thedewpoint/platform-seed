@@ -14,6 +14,9 @@ class DomainConfig {
         const code = config[domain] || config[domains[0]];   
         return code;
     }
+    static isValidDomain (domain){
+        return domains.includes(domain);
+    }
 }
 module.exports = {
     DomainConfig: DomainConfig
