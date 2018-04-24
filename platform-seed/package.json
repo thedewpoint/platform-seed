@@ -9,8 +9,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "testall" : "npm run test & npm run mochatest & npm run e2e",
-    "mochatest": "mocha utils/*/*.spec.*"
+    "testall": "npm run test & npm run mochatest & npm run e2e",
+    "mochatest": "mocha utils/*/*.spec.*",
+    "server": "node server",
+    "build:universal": "npm run build:client-and-server-bundles && npm run server",
+    "serve:universal": "node dist/server.js",
+    "build:client-and-server-bundles": "ng build --prod && ng build --prod --app 1 --output-hashing=false"
   },
   "private": true,
   "dependencies": {
@@ -22,10 +26,14 @@
     "@angular/http": "^5.1.0",
     "@angular/platform-browser": "^5.1.0",
     "@angular/platform-browser-dynamic": "^5.1.0",
+    "@angular/platform-server": "^5.1.0",
     "@angular/router": "^5.1.0",
+    "@nguniversal/express-engine": "^5.0.0",
+    "@nguniversal/module-map-ngfactory-loader": "^5.0.0",
     "core-js": "^2.4.1",
     "express": "^4.16.3",
     "rxjs": "^5.5.6",
+    "ts-loader": "^4.2.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
