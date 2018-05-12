@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IntlComponent } from '../toggle-component';
-@IntlComponent({
-  toggles:["test-div"]
+import { Feature } from '../toggle.decorator';
+@Feature({
+  toggles:["testToggle"]
 })
 @Component({
   selector: 'test-div',
@@ -10,6 +10,7 @@ import { IntlComponent } from '../toggle-component';
 })
 export class TestDivComponent implements OnInit {
 
+  testToggle;
   constructor() { }
 
   ngOnInit() {
