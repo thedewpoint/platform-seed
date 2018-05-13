@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Feature } from '../gatekeeper/toggle.decorator';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
-
+import { ConfigService } from '../config/config.service';
 @Feature({
   toggles:["testToggle"]
 })
@@ -13,11 +13,14 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
 export class TestDivComponent implements OnInit {
 
   testToggle;
-  constructor( ) {
-    // console.log("countrycode", req.countryCode);
+  dropDowns;
+  constructor(private _configService: ConfigService ) {
    }
 
   ngOnInit() {
+    this._configService.getConfig().subscribe(config=>{
+      this.dropDowns = config.dropDowns;
+    });
   }
 
 }

@@ -25,6 +25,7 @@ app.engine('html', ngExpressEngine({
 
 //use middleware for determining request location and set country code.
 app.use(domainAdapter);
+app.get('/config', (req,res)=>{res.json(req.config)});
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 app.get('*', (req, res) => {
     res.render(join(DIST_FOLDER, 'browser', 'index.html'), { 

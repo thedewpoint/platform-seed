@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { InjectorModule } from './injector/injector.module';
 import {GatekeeperService} from './gatekeeper/gatekeeper.service';
+import {ConfigService} from './config/config.service';
+
 import { TestDivComponent } from './test-div/test-div.component';
 
 
@@ -18,7 +20,7 @@ import { TestDivComponent } from './test-div/test-div.component';
     InjectorModule,
     HttpClientModule,
   ],
-  providers: [GatekeeperService],
+  providers: [GatekeeperService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
