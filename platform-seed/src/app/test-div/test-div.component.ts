@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Feature } from '../gatekeeper/toggle.decorator';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { ConfigService } from '../config/config.service';
 @Feature({
   toggles:["testToggle"]
