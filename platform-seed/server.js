@@ -27,6 +27,12 @@ app.engine('html', ngExpressEngine({
 app.use(domainAdapter);
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 app.get('*', (req, res) => {
-    res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req });
+    res.render(join(DIST_FOLDER, 'browser', 'index.html'), { 
+      req,
+      providers: [{
+        provide: 'countryCode',
+        useValue: `${req.countryCode}`
+      }]
+     });
   });
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));

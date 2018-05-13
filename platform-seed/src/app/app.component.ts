@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Inject, PLATFORM_ID, APP_ID, Component, Injectable } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import {GatekeeperService} from './gatekeeper.service';
+import {GatekeeperService} from './gatekeeper/gatekeeper.service';
 
 @Component({
   selector: 'app-root',

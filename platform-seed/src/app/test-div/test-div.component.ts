@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Feature } from '../toggle.decorator';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Feature } from '../gatekeeper/toggle.decorator';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+
 @Feature({
   toggles:["testToggle"]
 })
@@ -11,7 +13,9 @@ import { Feature } from '../toggle.decorator';
 export class TestDivComponent implements OnInit {
 
   testToggle;
-  constructor() { }
+  constructor( ) {
+    // console.log("countrycode", req.countryCode);
+   }
 
   ngOnInit() {
   }

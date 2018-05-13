@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule,BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule, Injector} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { InjectorModule } from './injector/injector.module';
-import {GatekeeperService} from './gatekeeper.service';
+import {GatekeeperService} from './gatekeeper/gatekeeper.service';
 import { TestDivComponent } from './test-div/test-div.component';
 
 
@@ -14,6 +14,7 @@ import { TestDivComponent } from './test-div/test-div.component';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'platform-seed' }),
+    BrowserTransferStateModule,
     InjectorModule,
     HttpClientModule,
   ],

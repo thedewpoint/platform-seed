@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {GatekeeperService} from './gatekeeper.service';
 import {TypeDecorator} from '@angular/core';
-import {InjectorModule} from './injector/injector.module';
+import {InjectorModule} from '../injector/injector.module';
 
 
 export function Feature( properties: any): Function {
