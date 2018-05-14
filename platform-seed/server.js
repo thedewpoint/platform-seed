@@ -2,6 +2,7 @@ require('zone.js/dist/zone-node');
 require('reflect-metadata');
 const { enableProdMode } = require('@angular/core');
 const express = require('express');
+const request = require('request');
 const { join } = require('path');
 const domainAdapter = require('./utils/domain-adapter');
 const { ngExpressEngine } = require('@nguniversal/express-engine');
@@ -25,6 +26,13 @@ app.engine('html', ngExpressEngine({
 
 //use middleware for determining request location and set country code.
 app.use(domainAdapter);
+app.get('/weather/:locationCode', (req,res)=>{
+  const BASE_URL = 'https://www.metaweather.com/api/location/'
+  console.log(`${BASE_URL}/${req.params.locationCode}/`);
+  request(`${BASE_URL}${req.params.locationCode}/`,(error,response,body)=>{
+    res.json(body);
+  });
+});
 app.get('/config', (req,res)=>{res.json(req.config)});
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 app.get('*', (req, res) => {

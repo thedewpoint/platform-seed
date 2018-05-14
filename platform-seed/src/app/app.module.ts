@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { InjectorModule } from './injector/injector.module';
 import {GatekeeperService} from './gatekeeper/gatekeeper.service';
 import {ConfigService} from './config/config.service';
+import {WeatherService} from './weather/weather.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TestDivComponent } from './test-div/test-div.component';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
 
 
 
@@ -23,9 +24,10 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     BrowserAnimationsModule,
     HttpClientModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
-  providers: [GatekeeperService, ConfigService],
+  providers: [GatekeeperService, ConfigService, WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,4 +1,5 @@
 module.exports = {
     ...require('./shared'),
-    dropDowns : ["Germany drop"]
+    dropDowns : ["Germany drop"],
+    locationCode: "650272"
 }
