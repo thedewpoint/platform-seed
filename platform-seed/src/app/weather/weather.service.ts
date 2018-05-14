@@ -9,7 +9,7 @@ import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/do';
 @Injectable()
 export class WeatherService {
-  private BASE_URL = "/weather/"
+  private BASE_URL = "http://weathergermany.local:4000/weather/"
   constructor(private _http: HttpClient, private _transferState: TransferState) { }
   getWeather(locationCode: string): Observable<Weather>{
     console.log("calling weather service with code " + locationCode);

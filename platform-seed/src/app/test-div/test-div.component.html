@@ -1,27 +1,35 @@
 <!-- <p *ngIf="testToggle"> -->
+  <style>
+    li {list-style: none;}
+    </style>
+    <h1>      {{weather.parent.title}} / {{weather.title}} </h1>
     <ul>
         <li *ngFor="let weatherData of weather['consolidated_weather']">
             <mat-card class="example-card">
-                {{weatherData.weather_state_name}}
+                 <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title>{{weatherData.applicable_date}}</mat-card-title>
+                  <mat-card-subtitle>{{weatherData.weather_state_name}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <br/>
+                       <span>Wind speed:{{weatherData.wind_speed}}</span><br/>
+                       <span>Humidity:{{weatherData.humidity}}</span>
+                       
+                     </mat-card-content>
                 <!-- <mat-card-header>
                   <div mat-card-avatar class="example-header-image"></div>
                   <mat-card-title>Shiba Inu</mat-card-title>
                   <mat-card-subtitle>Dog Breed</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                  <p>
-                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                    bred for hunting.
-                  </p>
-                </mat-card-content>
+             
                 <mat-card-actions>
                   <button mat-button>LIKE</button>
                   <button mat-button>SHARE</button>
                 </mat-card-actions> -->
-              </mat-card>
-        </li>
+              </mat-card> 
+       </li>
       </ul>
   
   

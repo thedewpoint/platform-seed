@@ -28,11 +28,27 @@ app.engine('html', ngExpressEngine({
 app.use(domainAdapter);
 app.get('/weather/:locationCode', (req,res)=>{
   const BASE_URL = 'https://www.metaweather.com/api/location/'
-  console.log(`${BASE_URL}/${req.params.locationCode}/`);
-  request(`${BASE_URL}${req.params.locationCode}/`,(error,response,body)=>{
-    res.json(body);
+  console.log(`${BASE_URL}${req.params.locationCode}/`);
+  // request(`${BASE_URL}${req.params.locationCode}/`,(error,response,body)=>{
+  //   res.json(JSON.parse(body));
+  // });
+  res.json(require(`./mock/${req.config.countryCode}.mock.json`))
+});
+app.get('/gatekeeper/:toggleName', (req,res)=>{
+  const variablePattern = /\${\w+}/;
+  const BASE_URL = 'http://localhost:1337/toggle?name=';
+  let toggleName = req.params.toggleName;
+  console.log("toggleName",toggleName);
+  if(variablePattern.test(toggleName)){
+    const regexp = new RegExp(variablePattern);
+    const variableName = regexp.exec(req.params.toggleName)[0].replace("{","").replace("}","").replace("$","");
+     toggleName = toggleName.replace(variablePattern, req.config[variableName]);
+  }
+    request(`${BASE_URL}${toggleName}`,(error,response,body)=>{
+    res.json(JSON.parse(body));
   });
 });
+
 app.get('/config', (req,res)=>{res.json(req.config)});
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 app.get('*', (req, res) => {

@@ -1,8 +1,9 @@
 
 {
     "weathergermany.duckdns.org" : "de.inst",
+    "weathergermany.local" : "de.inst",
     "it.vanguard" : "it.inst",
     "vanguardinvestor.co.uk" : "uk.ret",
-    "weathercanada.duckdns.org" : "ca.ret"
-
+    "weathercanada.duckdns.org" : "ca.ret",
+    "weathercanada.local" : "ca.ret"
 }

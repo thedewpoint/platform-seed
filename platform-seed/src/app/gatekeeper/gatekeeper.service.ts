@@ -16,7 +16,7 @@ export interface FeatureToggle {
 
 @Injectable()
 export class GatekeeperService {
-  BASE_URL = "http://localhost:1337/toggle";
+  BASE_URL = "http://weathergermany.local:4000/gatekeeper/";
   constructor(private _http:HttpClient, private _transferState: TransferState) { }
 
   public isToggled (toggleNames: string | string[]): Observable<FeatureToggle[]>{
@@ -29,12 +29,7 @@ export class GatekeeperService {
     if(found) {
      return Observable.of(this._transferState.get<FeatureToggle>(RESULT_KEY,null));
     } else {
-    const params = new HttpParams({
-      fromObject: {
-        name: toggle
-      }
-    });
-      return this._http.get<Toggle[]>(this.BASE_URL, {params})
+      return this._http.get<Toggle[]>(`${this.BASE_URL}${toggle}`)
       .map(toggle=>{
           const {toggled, name} = toggle[0];
           const returnObj = {toggled, name};

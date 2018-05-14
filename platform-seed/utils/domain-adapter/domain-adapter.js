@@ -8,5 +8,7 @@ module.exports = function (req, res, next) {
     const {subdomain, domain, tld} = pattern.match(req.headers.host);
     const countryCode = domainConfig.getCodeFromDomain(`${subdomain}.${domain}.${tld}`);
     req.config = {countryCode,...require(`../../config/${countryCode}`)};
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    // console.log("response " +res.setHeader());
     next();
 }

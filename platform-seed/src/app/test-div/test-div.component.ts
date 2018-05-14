@@ -8,12 +8,22 @@ import {WeatherService} from '../weather/weather.service';
   styleUrls: ['./test-div.component.css']
 })
 export class TestDivComponent implements OnInit {
-  @Toggle()
-  testToggle;
+  // @Toggle()
+  // showHumidity;
+
+ 
+   @Config()
+  locationCode;
 
   @Config()
-  locationCode;
-  
+  countryCode;
+
+  @Toggle('${countryCode}.showHumidity')
+  showHumidity;
+
+
+ 
+
   weather;
   
   constructor(private _weatherService: WeatherService) {}
