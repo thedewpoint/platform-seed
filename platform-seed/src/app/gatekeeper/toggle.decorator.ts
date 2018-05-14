@@ -11,10 +11,11 @@ export function Toggle(toggleName?: string): Function {
         toggles.forEach(toggle => {
           target[key] = toggle.toggled;
         });
+        if (original) {
+          original.apply(this, args);
+        }
       });
-      if (original) {
-        original.apply(this, args);
-      }
+     
     }
   }
 }
