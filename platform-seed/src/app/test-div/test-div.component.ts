@@ -8,28 +8,18 @@ import {WeatherService} from '../weather/weather.service';
   styleUrls: ['./test-div.component.css']
 })
 export class TestDivComponent implements OnInit {
-  // @Toggle()
-  // showHumidity;
-
- 
-   @Config()
-  locationCode;
-
-  @Config()
-  countryCode;
-
+  
   @Toggle('${countryCode}.showHumidity')
   showHumidity;
-
-
  
+ @Config()
+  locationCode;
 
   weather;
   
   constructor(private _weatherService: WeatherService) {}
   ngOnInit() {
     this._weatherService.getWeather(this.locationCode).subscribe((weather)=>{
-      console.log("weather data", weather);
       this.weather = weather;
     });
   }

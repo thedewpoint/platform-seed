@@ -11,8 +11,7 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class ConfigService {
-  BASE_URL: string = "http://weathergermany.local:4000/config";
-  static config;
+  BASE_URL: string = "/config";
   constructor( @Inject(PLATFORM_ID) private _platformId, private _http:HttpClient, private _transferState: TransferState, private _injector: Injector) {
     if(isPlatformServer(_platformId)) {
       let req = _injector.get(REQUEST);

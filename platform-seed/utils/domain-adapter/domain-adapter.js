@@ -6,9 +6,8 @@ const pattern = new UrlPattern('(http(s)\\://)(:subdomain.):domain.:tld(\\::port
 
 module.exports = function (req, res, next) {
     const {subdomain, domain, tld} = pattern.match(req.headers.host);
-    const countryCode = domainConfig.getCodeFromDomain(`${subdomain}.${domain}.${tld}`);
+    const countryCode = domainConfig.getCodeFromDomain(`${domain}.${tld}`);
     req.config = {countryCode,...require(`../../config/${countryCode}`)};
     res.setHeader("Access-Control-Allow-Origin", "*");
-    // console.log("response " +res.setHeader());
     next();
 }

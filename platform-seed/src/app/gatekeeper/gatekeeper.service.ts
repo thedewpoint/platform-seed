@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import {Toggle} from './toggle'
@@ -16,8 +18,13 @@ export interface FeatureToggle {
 
 @Injectable()
 export class GatekeeperService {
-  BASE_URL = "http://weathergermany.local:4000/gatekeeper/";
-  constructor(private _http:HttpClient, private _transferState: TransferState) { }
+  BASE_URL = "/gatekeeper/";
+  constructor(@Inject(PLATFORM_ID) private _platformId, private _http:HttpClient, private _transferState: TransferState, private _injector: Injector) { 
+    if(isPlatformServer(_platformId)) {
+      let req = _injector.get(REQUEST);
+      this.BASE_URL = `${req.protocol}://${req.headers.host}${this.BASE_URL}`;
+    }
+  }
 
   public isToggled (toggleNames: string | string[]): Observable<FeatureToggle[]>{
     if(!Array.isArray(toggleNames)) {
