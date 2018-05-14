@@ -13,10 +13,11 @@ export function Config(configName?: string): Function {
         } else {
           target[key] = config[key];
         }
+        if (original) {
+          original.apply(this, args);
+        }
       });
-      if (original) {
-        original.apply(this, args);
-      }
+     
     }
   }
 }
