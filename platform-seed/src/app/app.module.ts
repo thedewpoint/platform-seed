@@ -5,8 +5,10 @@ import { AppComponent } from './app.component';
 import { InjectorModule } from './injector/injector.module';
 import {GatekeeperService} from './gatekeeper/gatekeeper.service';
 import {ConfigService} from './config/config.service';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TestDivComponent } from './test-div/test-div.component';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
 
 
 @NgModule({
@@ -18,7 +20,10 @@ import { TestDivComponent } from './test-div/test-div.component';
     BrowserModule.withServerTransition({ appId: 'platform-seed' }),
     BrowserTransferStateModule,
     InjectorModule,
+    BrowserAnimationsModule,
     HttpClientModule,
+    MatCheckboxModule,
+    MatButtonModule
   ],
   providers: [GatekeeperService, ConfigService],
   bootstrap: [AppComponent]
