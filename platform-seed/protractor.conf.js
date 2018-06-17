@@ -13,7 +13,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://localhost:4200/',
+  baseUrl: 'http://localhost:4000/',
   //custom for enabling cucumber protractor
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),

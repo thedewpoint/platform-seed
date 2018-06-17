@@ -1,8 +1,8 @@
-Feature: platform seed works
+Feature: Viewing the weather
 
-   The app should work
+   The user should be able to view the weather
 
-   Scenario: Get the welcome message
-   Given I navigate to the homepage
+   Scenario: Seeing the header
+   Given I navigate to the homepage on "ca.ret"
    When The page loads
-   Then I should see the text "Welcome to app!"
+   Then I should see the text "Canada / Toronto"
