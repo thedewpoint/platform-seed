@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Inject, PLATFORM_ID, APP_ID, Component, Injectable } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { NgModule, Inject, PLATFORM_ID, APP_ID, Component, OnInit, Injectable } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import {GatekeeperService} from './gatekeeper/gatekeeper.service';
+import {Config} from './config/config.decorator';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,14 @@ import {GatekeeperService} from './gatekeeper/gatekeeper.service';
   styleUrls: ['./app.component.css']
 })
 @Injectable()
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
+  cssUrl;
   platform;
+  @Config()
+  countryCode: string;
   constructor(
+    public sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(APP_ID) private appId: string
   ) {
@@ -20,5 +24,8 @@ export class AppComponent {
       'in the browser' : 'on the server';
     console.log(`Running ${platform} with appId=${appId}`);
     this.platform = platformId;
+  }
+  ngOnInit () {
+    this.cssUrl = `./${this.countryCode}.css`;
   }
 }

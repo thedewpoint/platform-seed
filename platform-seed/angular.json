@@ -21,7 +21,9 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              {"input":"src/sass/ca.ret.scss","lazy": true},
+              {"input":"src/sass/de.inst.scss","lazy": true}
             ],
             "scripts": []
           },
