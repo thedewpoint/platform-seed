@@ -10,8 +10,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TestDivComponent } from './test-div/test-div.component';
 import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
 import { WeatherModule } from 'weather';
-
-
+import { Angulartics2RouterlessModule } from 'angulartics2/routerlessmodule';
+import { Angulartics2AdobeAnalytics } from 'angulartics2/adobeanalytics';
+import {Location} from '@angular/common';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,11 @@ import { WeatherModule } from 'weather';
     MatCheckboxModule,
     MatButtonModule,
     MatCardModule,
-    WeatherModule
+    WeatherModule,
+    Angulartics2RouterlessModule.forRoot([Angulartics2AdobeAnalytics]),
+    RouterModule.forRoot([])
   ],
-  providers: [GatekeeperService, ConfigService, WeatherService],
+  providers: [GatekeeperService, ConfigService, WeatherService, Location],
   bootstrap: [AppComponent]
 })
 export class AppModule {

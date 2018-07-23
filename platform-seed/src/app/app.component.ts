@@ -2,6 +2,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NgModule, Inject, PLATFORM_ID, APP_ID, Component, OnInit, Injectable } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import {Config} from './config/config.decorator';
+import { Angulartics2AdobeAnalytics } from 'angulartics2/adobeanalytics';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit {
   @Config()
   countryCode: string;
   constructor(
+    private angulartics2adobe: Angulartics2AdobeAnalytics,
     public sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(APP_ID) private appId: string
