@@ -14,14 +14,16 @@ import { Angulartics2RouterlessModule } from 'angulartics2/routerlessmodule';
 import { Angulartics2AdobeAnalytics } from 'angulartics2/adobeanalytics';
 import {Location} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import { CompHostDirective } from './comp-host.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestDivComponent
+    TestDivComponent,
+    CompHostDirective
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'platform-seed' }),
+  BrowserModule.withServerTransition({ appId: 'platform-seed' }),
     BrowserTransferStateModule,
     InjectorModule,
     BrowserAnimationsModule,
